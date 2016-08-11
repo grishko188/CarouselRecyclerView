@@ -672,24 +672,24 @@ public class CarouselRecyclerView extends RecyclerView {
         return mChildViewHeight;
     }
 
-    public void setChildViewHeight(int mChildViewHeight) {
-        this.mChildViewHeight = mChildViewHeight;
+    public void setChildViewHeight(int childViewHeight) {
+        this.mChildViewHeight = childViewHeight;
     }
 
     public int getChildViewWeight() {
         return mChildViewWeight;
     }
 
-    public void setChildViewWeight(int mChildViewWeight) {
-        this.mChildViewWeight = mChildViewWeight;
+    public void setChildViewWeight(int childViewWeight) {
+        this.mChildViewWeight = childViewWeight;
     }
 
-    public double getChildViewProportionsAccoridingToWidth() {
+    public double getChildViewProportionsAccordingToWidth() {
         return mChildViewProportionsAccordingToWidth;
     }
 
-    public void setChildViewProportionsAccoridingToWidth(double mChildViewProportionsAccoridingToWidth) {
-        this.mChildViewProportionsAccordingToWidth = mChildViewProportionsAccoridingToWidth;
+    public void setChildViewProportionsAccordingToWidth(double childViewProportionsAccordingToWidth) {
+        this.mChildViewProportionsAccordingToWidth = childViewProportionsAccordingToWidth;
     }
 
     private static class OnChangeObserver extends AdapterDataObserver implements View.OnLayoutChangeListener {
