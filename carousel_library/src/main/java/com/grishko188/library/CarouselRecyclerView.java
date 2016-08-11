@@ -8,7 +8,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.PointF;
 import android.os.Handler;
-
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
@@ -116,7 +116,7 @@ public class CarouselRecyclerView extends RecyclerView {
         this.mObserver = new CarouselRecyclerView.OnChangeObserver();
         this.setHasFixedSize(true);
         this.setOverScrollMode(2);
-        this.setLayoutManager(new CarouselRecyclerView.LayoutManager());
+        this.setLayoutManager(new CarouselRecyclerView.LayoutManager(getContext()));
         android.support.v7.widget.RecyclerView.OnScrollListener onScrollListener = new android.support.v7.widget.RecyclerView.OnScrollListener() {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if (newState == 0 && CarouselRecyclerView.this.getChildCount() > 0) {
@@ -169,7 +169,7 @@ public class CarouselRecyclerView extends RecyclerView {
     }
 
     public void resetLayoutManager() {
-        this.setLayoutManager(new CarouselRecyclerView.LayoutManager());
+        this.setLayoutManager(new CarouselRecyclerView.LayoutManager(getContext()));
     }
 
     public void setGreedyTouchMode(boolean greedy) {
@@ -863,16 +863,17 @@ public class CarouselRecyclerView extends RecyclerView {
         void onNonCenterPosition(boolean var1);
     }
 
-    private class LayoutManager extends android.support.v7.widget.RecyclerView.LayoutManager {
+    private class LayoutManager extends LinearLayoutManager {
         private int mFirstPosition;
         private boolean mPushFirstHigher;
         private int mAbsoluteScroll;
         private boolean mUseOldViewTop;
         private boolean mWasZoomedIn;
-        private android.support.v7.widget.RecyclerView.SmoothScroller mSmoothScroller;
-        private android.support.v7.widget.RecyclerView.SmoothScroller mDefaultSmoothScroller;
+        private RecyclerView.SmoothScroller mSmoothScroller;
+        private RecyclerView.SmoothScroller mDefaultSmoothScroller;
 
-        private LayoutManager() {
+        private LayoutManager(Context context) {
+            super(context);
             this.mUseOldViewTop = true;
             this.mWasZoomedIn = false;
         }
@@ -1130,7 +1131,7 @@ public class CarouselRecyclerView extends RecyclerView {
             this.requestLayout();
         }
 
-        public void setCustomSmoothScroller(android.support.v7.widget.RecyclerView.SmoothScroller smoothScroller) {
+        public void setCustomSmoothScroller(RecyclerView.SmoothScroller smoothScroller) {
             this.mSmoothScroller = smoothScroller;
         }
 
@@ -1147,7 +1148,7 @@ public class CarouselRecyclerView extends RecyclerView {
         }
 
         public void smoothScrollToPosition(RecyclerView recyclerView, State state, int position) {
-            android.support.v7.widget.RecyclerView.SmoothScroller scroller = this.mSmoothScroller;
+            RecyclerView.SmoothScroller scroller = this.mSmoothScroller;
             if (scroller == null) {
                 scroller = this.getDefaultSmoothScroller(recyclerView);
             }
@@ -1198,7 +1199,7 @@ public class CarouselRecyclerView extends RecyclerView {
             return this.mFirstPosition;
         }
 
-        public void onAdapterChanged(android.support.v7.widget.RecyclerView.Adapter oldAdapter, android.support.v7.widget.RecyclerView.Adapter newAdapter) {
+        public void onAdapterChanged(RecyclerView.Adapter oldAdapter, android.support.v7.widget.RecyclerView.Adapter newAdapter) {
             this.removeAllViews();
         }
     }

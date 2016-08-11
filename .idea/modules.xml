@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CarouselRecyclerView.iml" filepath="$PROJECT_DIR$/CarouselRecyclerView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/carousel_library/carousel_library.iml" filepath="$PROJECT_DIR$/carousel_library/carousel_library.iml" />
     </modules>
   </component>
 </project>
