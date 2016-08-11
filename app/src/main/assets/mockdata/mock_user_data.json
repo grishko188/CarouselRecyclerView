@@ -1,0 +1,12 @@
+{
+  "user_info": {
+    "id": 8891,
+    "gender": "M",
+    "first_name": "Bruce",
+    "last_name": "Wayne",
+    "email": "batman@gmail.com",
+    "country": "Gotham City",
+    "phone": "111-(048)121-11112",
+    "photo": "wayne"
+  }
+}
