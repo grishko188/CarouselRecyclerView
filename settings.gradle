@@ -1,1 +1,1 @@
-include ':app', ':carousel_library'
+include ':app', ':library'
