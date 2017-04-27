@@ -23,6 +23,7 @@ import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -901,7 +902,18 @@ public class CarouselRecyclerView extends RecyclerView {
             }
         }
 
+        private void ensureLayoutStateCompat() {
+            try {
+                Method m = getClass().getSuperclass().getDeclaredMethod("ensureLayoutState", new Class<?>[]{});
+                m.setAccessible(true);
+                m.invoke(this, (Object[])null);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        }
+
         public void onLayoutChildren(Recycler recycler, State state) {
+            ensureLayoutStateCompat();
             int parentBottom = this.getHeight() - this.getPaddingBottom();
             int oldTop = CarouselRecyclerView.this.getCentralViewTop() + CarouselRecyclerView.this.mInitialOffset;
             if (this.mUseOldViewTop && this.getChildCount() > 0) {
